@@ -1,71 +1,90 @@
-<a href="https://chat.vercel.ai/">
-  <img alt="Next.js 14 and App Router-ready AI chatbot." src="https://chat.vercel.ai/opengraph-image.png">
-  <h1 align="center">Next.js AI Chatbot</h1>
-</a>
 
-<p align="center">
-  An open-source AI chatbot app template built with Next.js, the Vercel AI SDK, OpenAI, and Vercel KV.
-</p>
+**Title:**  Resume Chatbot with Cohere & Next.js
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#model-providers"><strong>Model Providers</strong></a> ·
-  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
-  <a href="#running-locally"><strong>Running locally</strong></a> ·
-  <a href="#authors"><strong>Authors</strong></a>
-</p>
-<br/>
+**Description:**
 
-## Features
+A user-friendly chatbot application built with Next.js that leverages Cohere's powerful NLP capabilities to provide insightful and tailored answers to frequently asked resume-related questions.
 
-- [Next.js](https://nextjs.org) App Router
-- React Server Components (RSCs), Suspense, and Server Actions
-- [Vercel AI SDK](https://sdk.vercel.ai/docs) for streaming chat UI
-- Support for OpenAI (default), Anthropic, Cohere, Hugging Face, or custom AI chat models and/or LangChain
-- [shadcn/ui](https://ui.shadcn.com)
-  - Styling with [Tailwind CSS](https://tailwindcss.com)
-  - [Radix UI](https://radix-ui.com) for headless component primitives
-  - Icons from [Phosphor Icons](https://phosphoricons.com)
-- Chat History, rate limiting, and session storage with [Vercel KV](https://vercel.com/storage/kv)
-- [NextAuth.js](https://github.com/nextauthjs/next-auth) for authentication
 
-## Model Providers
+**Project Overview:**
 
-This template ships with OpenAI `gpt-3.5-turbo` as the default. However, thanks to the [Vercel AI SDK](https://sdk.vercel.ai/docs), you can switch LLM providers to [Anthropic](https://anthropic.com), [Cohere](https://cohere.com/), [Hugging Face](https://huggingface.co), or using [LangChain](https://js.langchain.com) with just a few lines of code.
+This project empowers users to gain valuable feedback on their resumes by engaging in an interactive chat with a Cohere-powered AI. The chatbot addresses common resume concerns, offering suggestions and guidance to enhance clarity, impact, and overall effectiveness.
 
-## Deploy Your Own
+**Features:**
 
-You can deploy your own version of the Next.js AI Chatbot to Vercel with one click:
+* **Conversational Interface:** Users interact with the chatbot in a natural, question-and-answer format, making the experience intuitive and engaging.
+* **RAG-powered Q&A**: Retrieval-Augmented Generation (RAG) improves the chatbot's accuracy by finding relevant passages from a pre-built knowledge base (e.g., resume best practices) before using Cohere's NLP to generate answers..
+* **Cohere Integration:** Cohere's advanced NLP capabilities provide accurate and relevant information on resume-related topics.
+* **Next.js Framework:** Leverages the benefits of Next.js for a performant and streamlined development experience.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-title=Next.js+Chat&demo-description=A+full-featured%2C+hackable+Next.js+AI+chatbot+built+by+Vercel+Labs&demo-url=https%3A%2F%2Fchat.vercel.ai%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F4aVPvWuTmBvzM5cEdRdqeW%2F4234f9baf160f68ffb385a43c3527645%2FCleanShot_2023-06-16_at_17.09.21.png&project-name=Next.js+Chat&repository-name=nextjs-chat&repository-url=https%3A%2F%2Fgithub.com%2Fvercel-labs%2Fai-chatbot&from=templates&skippable-integrations=1&env=OPENAI_API_KEY%2CAUTH_SECRET&envDescription=How+to+get+these+env+vars&envLink=https%3A%2F%2Fgithub.com%2Fvercel-labs%2Fai-chatbot%2Fblob%2Fmain%2F.env.example&teamCreateStatus=hidden&stores=[{"type":"kv"}])
+**Technical Stack:**
 
-## Creating a KV Database Instance
+* **Frontend:** Next.js
+* **Backend:** Python (Flask)
+* **Natural Language Processing (NLP):** Cohere
 
-Follow the steps outlined in the [quick start guide](https://vercel.com/docs/storage/vercel-kv/quickstart#create-a-kv-database) provided by Vercel. This guide will assist you in creating and configuring your KV database instance on Vercel, enabling your application to interact with it.
+**Understanding RAG (R)**:
 
-Remember to update your environment variables (`KV_URL`, `KV_REST_API_URL`, `KV_REST_API_TOKEN`, `KV_REST_API_READ_ONLY_TOKEN`) in the `.env` file with the appropriate credentials provided during the KV database setup.
+Retrieval-Augmented Generation (RAG) is a cutting-edge approach to question answering with large language models (LLMs) like Cohere. It combines two key steps:
 
-## Running locally
+Retrieval: The RAG system searches its knowledge base for relevant passages that align with the user's question. This knowledge base can be a collection of documents, FAQs, or other text resources related to resumes.
+Augmented Generation: The LLM (Cohere in this case) analyzes the retrieved passages and uses them to inform its response. This helps to ensure that the chatbot's answers are grounded in factual information and targeted to the specific resume-related query.
+This RAG approach enhances the accuracy and focus of the chatbot's responses compared to LLMs that generate answers solely based on their internal training data.
 
-You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js AI Chatbot. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/projects/environment-variables) for this, but a `.env` file is all that is necessary.
+**Getting Started:**
 
-> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various OpenAI and authentication provider accounts.
+**Prerequisites (R):**
 
-1. Install Vercel CLI: `npm i -g vercel`
-2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
-3. Download your environment variables: `vercel env pull`
+* Node.js installed on your system. You can verify this by running `node -v` in your terminal.
+* A Cohere account with API access. Refer to Cohere documentation for signup and API key retrieval instructions.
+* Python installed on your system.
 
-```bash
-pnpm install
-pnpm dev
-```
+**Installation (A):**
 
-Your app template should now be running on [localhost:3000](http://localhost:3000/).
+1. Clone this repository:
 
-## Authors
+   ```bash
+   git clone https://github.com/nagaraj-real/nextjs-chat.git
+   ```
 
-This library is created by [Vercel](https://vercel.com) and [Next.js](https://nextjs.org) team members, with contributions from:
+2. Navigate to the project directory:
 
-- Jared Palmer ([@jaredpalmer](https://twitter.com/jaredpalmer)) - [Vercel](https://vercel.com)
-- Shu Ding ([@shuding\_](https://twitter.com/shuding_)) - [Vercel](https://vercel.com)
-- shadcn ([@shadcn](https://twitter.com/shadcn)) - [Vercel](https://vercel.com)
+   ```bash
+   cd nextjs-chat
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   pnpm i
+   ```
+
+4. Add your Cohere API Key to .env
+
+   ```bash
+   COHERE_API_KEY= xxxxxxx
+   ```
+
+**Usage (G):**
+
+1. Start the development server:
+
+   ```bash
+   pnpm dev
+   ```
+
+2. Access the chatbot in your web browser:
+
+   - The default development server usually starts at `http://localhost:3000`. You might need to adjust the port number if it's already in use.
+
+
+4. Update the file(test.pdf) to be used as context in app/api folder.
+   You may need to update app.py as well with the new file details.
+
+3. Type your resume-related questions into the chat interface. The chatbot will respond with helpful insights.
+
+
+**Deployment (Optional):**
+
+- If you intend to deploy the chatbot to a production environment, you'll need to follow specific instructions for your chosen hosting platform (e.g., Vercel, Netlify, AWS, etc.).
+- Ensure proper environment variable configuration (e.g., Cohere API key) for your deployment.
