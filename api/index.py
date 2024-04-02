@@ -1,15 +1,11 @@
-from flask import Flask
 
 from llama_index.llms.cohere import Cohere
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, ServiceContext
 from llama_index.embeddings.cohere import CohereEmbedding
 from llama_index.postprocessor.cohere_rerank import CohereRerank
 from llama_index.core.memory import ChatMemoryBuffer
-from http.server import BaseHTTPRequestHandler
-import os
 from os.path import dirname, abspath, join
-
-from flask import Flask
+from http.server import BaseHTTPRequestHandler
 
 dir = dirname(abspath(__file__))
 # API_KEY = "xf4JNVo6rJOf62gaXRwx8Ppp33AL36KPwk0wQi9Q"
@@ -48,8 +44,11 @@ dir = dirname(abspath(__file__))
 # response = chat_engine.chat("Hello!")
 # print(str(response))
  
-app = Flask(__name__)
-
-@app.route("/api/python")
-def hello_world():
-    return "<p>Hello, World!</p>"
+class handler(BaseHTTPRequestHandler):
+ 
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type','text/plain')
+        self.end_headers()
+        self.wfile.write('Hello, world!'.encode('utf-8'))
+        return
