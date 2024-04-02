@@ -3,9 +3,9 @@
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
 
-import { useActions, useUIState } from 'ai/rsc'
+import { useUIState } from 'ai/rsc'
 
-import { UserMessage } from './stocks/message'
+import { SpinnerMessage, UserMessage } from './stocks/message'
 import { type AI } from '@/lib/chat/actions'
 import { Button } from '@/components/ui/button'
 import { IconArrowElbow, IconPlus } from '@/components/ui/icons'
@@ -17,6 +17,7 @@ import {
 import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/navigation'
+import { useModelAction } from '@/lib/hooks/use-llm-action'
 
 export function PromptForm({
   input,
@@ -28,8 +29,8 @@ export function PromptForm({
   const router = useRouter()
   const { formRef, onKeyDown } = useEnterSubmit()
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
-  const { submitUserMessage } = useActions()
-  const [_, setMessages] = useUIState<typeof AI>()
+  const { submitUserMessage } = useModelAction()
+  const [messages, setMessages] = useUIState<typeof AI>()
 
   React.useEffect(() => {
     if (inputRef.current) {
@@ -51,19 +52,24 @@ export function PromptForm({
         const value = input.trim()
         setInput('')
         if (!value) return
-
+        const userMessages = [...messages];
         // Optimistically add user message UI
         setMessages(currentMessages => [
           ...currentMessages,
           {
             id: nanoid(),
-            display: <UserMessage>{value}</UserMessage>
+            display: (<><UserMessage>{value}</UserMessage><br /><SpinnerMessage /></>)
           }
         ])
-
-        // Submit and get response message
         const responseMessage = await submitUserMessage(value)
-        setMessages(currentMessages => [...currentMessages, responseMessage])
+        setMessages(_currentMessages => [
+          ...userMessages,
+          {
+            id: nanoid(),
+            display: <UserMessage>{value}</UserMessage>
+          },
+          responseMessage
+        ])
       }}
     >
       <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background px-8 sm:rounded-md sm:border sm:px-12">

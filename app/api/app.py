@@ -9,6 +9,7 @@ from os.path import dirname, abspath, join
 from flask import Flask
 from flask import request
 import os
+from flask_cors import CORS, cross_origin
 
 dir = dirname(abspath(__file__))
 API_KEY = os.environ['COHERE_API']
@@ -48,7 +49,8 @@ chat_engine = index.as_chat_engine(
  
 app = Flask(__name__)
 
-@app.route("/api/chat")
+@app.route("/api/chat", methods = ['GET'])
+@cross_origin(origin='*')
 def hello_world():
     question= request.args.get('question')
     question = "Hello! !" if question is None else question

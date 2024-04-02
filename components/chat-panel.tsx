@@ -10,7 +10,8 @@ import { ChatShareDialog } from '@/components/chat-share-dialog'
 import { useAIState, useActions, useUIState } from 'ai/rsc'
 import type { AI } from '@/lib/chat/actions'
 import { nanoid } from 'nanoid'
-import { UserMessage } from './stocks/message'
+import { SpinnerMessage, UserMessage } from './stocks/message'
+import { useModelAction } from '@/lib/hooks/use-llm-action'
 
 export interface ChatPanelProps {
   id?: string
@@ -31,7 +32,7 @@ export function ChatPanel({
 }: ChatPanelProps) {
   const [aiState] = useAIState()
   const [messages, setMessages] = useUIState<typeof AI>()
-  const { submitUserMessage } = useActions()
+  const { submitUserMessage } = useModelAction()
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false)
 
   const exampleMessages = [
@@ -70,15 +71,15 @@ export function ChatPanel({
             exampleMessages.map((example, index) => (
               <div
                 key={example.heading}
-                className={`cursor-pointer rounded-lg border bg-white p-4 hover:bg-zinc-50 dark:bg-zinc-950 dark:hover:bg-zinc-900 ${
-                  index > 1 && 'hidden md:block'
-                }`}
+                className={`cursor-pointer rounded-lg border bg-white p-4 hover:bg-zinc-50 dark:bg-zinc-950 dark:hover:bg-zinc-900 ${index > 1 && 'hidden md:block'
+                  }`}
                 onClick={async () => {
+                  const userMessages = [...messages];
                   setMessages(currentMessages => [
                     ...currentMessages,
                     {
                       id: nanoid(),
-                      display: <UserMessage>{example.message}</UserMessage>
+                      display: (<><UserMessage>{example.message}</UserMessage> <br /> <SpinnerMessage /></>)
                     }
                   ])
 
@@ -86,8 +87,12 @@ export function ChatPanel({
                     example.message
                   )
 
-                  setMessages(currentMessages => [
-                    ...currentMessages,
+                  setMessages(_currentMessages => [
+                    ...userMessages,
+                    {
+                      id: nanoid(),
+                      display: <UserMessage>{example.message}</UserMessage>
+                    },
                     responseMessage
                   ])
                 }}
