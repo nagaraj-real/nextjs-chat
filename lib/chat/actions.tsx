@@ -4,8 +4,8 @@ import {
   createAI,
   createStreamableUI,
   getMutableAIState,
-  getAIState} from 'ai/rsc'
-import OpenAI from 'openai'
+  getAIState
+} from 'ai/rsc'
 
 import {
   spinner,
@@ -28,10 +28,6 @@ import { saveChat } from '@/app/actions'
 import { SpinnerMessage, UserMessage } from '@/components/stocks/message'
 import { Chat } from '@/lib/types'
 import { auth } from '@/auth'
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || ''
-})
 
 async function confirmPurchase(symbol: string, price: number, amount: number) {
   'use server'
@@ -97,9 +93,8 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
         {
           id: nanoid(),
           role: 'system',
-          content: `[User has purchased ${amount} shares of ${symbol} at ${price}. Total cost = ${
-            amount * price
-          }]`
+          content: `[User has purchased ${amount} shares of ${symbol} at ${price}. Total cost = ${amount * price
+            }]`
         }
       ]
     })
@@ -133,9 +128,9 @@ async function submitUserMessage(content: string) {
 
   const ui = createStreamableUI(<SpinnerMessage />);
   (async () => {
-    const response = await fetch("https://shortly-heroic-owl.ngrok-free.app/api/chat?question="+content);
+    const response = await fetch("https://shortly-heroic-owl.ngrok-free.app/api/chat?question=" + content);
     const message = await response.text();
-    ui.done(<BotMessage content={message}/>);
+    ui.done(<BotMessage content={message} />);
   })();
 
   return {
