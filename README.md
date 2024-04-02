@@ -23,7 +23,7 @@ This project empowers users to gain valuable feedback on their resumes by engagi
 * **Backend:** Python (Flask)
 * **Natural Language Processing (NLP):** Cohere
 
-**Understanding RAG (R)**:
+**Understanding RAG**:
 
 Retrieval-Augmented Generation (RAG) is a cutting-edge approach to question answering with large language models (LLMs) like Cohere. It combines two key steps:
 
@@ -35,13 +35,13 @@ This RAG approach enhances the accuracy and focus of the chatbot's responses com
 
 ### Getting Started
 
-**Prerequisites (R):**
+**Prerequisites:**
 
 * Node.js installed on your system. You can verify this by running `node -v` in your terminal.
 * A Cohere account with API access. Refer to Cohere documentation for signup and API key retrieval instructions.
 * Python installed on your system.
 
-**Installation (A):**
+**Installation:**
 
 1. Clone this repository:
 
@@ -67,7 +67,7 @@ This RAG approach enhances the accuracy and focus of the chatbot's responses com
    COHERE_API_KEY= xxxxxxx
    ```
 
-**Usage (G):**
+**Usage:**
 
 1. Start the development server:
 
@@ -77,7 +77,7 @@ This RAG approach enhances the accuracy and focus of the chatbot's responses com
 
 2. Access the chatbot in your web browser:
 
-   - The default development server usually starts at `http://localhost:3000`. You might need to adjust the port number if it's already in use.
+   - The development server starts at `http://localhost:3000`.
 
 
 4. Update the file(test.pdf) to be used as context in app/api folder.
