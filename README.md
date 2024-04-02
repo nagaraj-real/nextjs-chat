@@ -1,23 +1,23 @@
 
-**Title:**  Resume Chatbot with Cohere & Next.js
+## Resume Chatbot with Cohere & Next.js
 
-**Description:**
+### Description
 
 A user-friendly chatbot application built with Next.js that leverages Cohere's powerful NLP capabilities to provide insightful and tailored answers to frequently asked resume-related questions.
 
 
-**Project Overview:**
+### Project Overview
 
 This project empowers users to gain valuable feedback on their resumes by engaging in an interactive chat with a Cohere-powered AI. The chatbot addresses common resume concerns, offering suggestions and guidance to enhance clarity, impact, and overall effectiveness.
 
-**Features:**
+### Features
 
 * **Conversational Interface:** Users interact with the chatbot in a natural, question-and-answer format, making the experience intuitive and engaging.
 * **RAG-powered Q&A**: Retrieval-Augmented Generation (RAG) improves the chatbot's accuracy by finding relevant passages from a pre-built knowledge base (e.g., resume best practices) before using Cohere's NLP to generate answers..
 * **Cohere Integration:** Cohere's advanced NLP capabilities provide accurate and relevant information on resume-related topics.
 * **Next.js Framework:** Leverages the benefits of Next.js for a performant and streamlined development experience.
 
-**Technical Stack:**
+### Technical Stack
 
 * **Frontend:** Next.js
 * **Backend:** Python (Flask)
@@ -27,11 +27,13 @@ This project empowers users to gain valuable feedback on their resumes by engagi
 
 Retrieval-Augmented Generation (RAG) is a cutting-edge approach to question answering with large language models (LLMs) like Cohere. It combines two key steps:
 
-Retrieval: The RAG system searches its knowledge base for relevant passages that align with the user's question. This knowledge base can be a collection of documents, FAQs, or other text resources related to resumes.
-Augmented Generation: The LLM (Cohere in this case) analyzes the retrieved passages and uses them to inform its response. This helps to ensure that the chatbot's answers are grounded in factual information and targeted to the specific resume-related query.
+*Retrieval*: The RAG system searches its knowledge base for relevant passages that align with the user's question. This knowledge base can be a collection of documents, FAQs, or other text resources related to resumes.
+
+*Augmented Generation*: The LLM (Cohere in this case) analyzes the retrieved passages and uses them to inform its response. This helps to ensure that the chatbot's answers are grounded in factual information and targeted to the specific resume-related query.
+
 This RAG approach enhances the accuracy and focus of the chatbot's responses compared to LLMs that generate answers solely based on their internal training data.
 
-**Getting Started:**
+### Getting Started
 
 **Prerequisites (R):**
 
@@ -83,8 +85,3 @@ This RAG approach enhances the accuracy and focus of the chatbot's responses com
 
 3. Type your resume-related questions into the chat interface. The chatbot will respond with helpful insights.
 
-
-**Deployment (Optional):**
-
-- If you intend to deploy the chatbot to a production environment, you'll need to follow specific instructions for your chosen hosting platform (e.g., Vercel, Netlify, AWS, etc.).
-- Ensure proper environment variable configuration (e.g., Cohere API key) for your deployment.
