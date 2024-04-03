@@ -80,7 +80,7 @@ This RAG approach enhances the accuracy and focus of the chatbot's responses com
    - The development server starts at `http://localhost:3000`.
 
 
-4. Update the file(test.pdf) to be used as context in app/api folder.
+4. Update the file(test.pdf) to be used as context in app/api/data folder.
    You may need to update app.py as well with the new file details.
 
 3. Type your resume-related questions into the chat interface. The chatbot will respond with helpful insights.

@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "flask-dev": "FLASK_DEBUG=1 pip3 install -r requirements.txt && cd app/api && python3 -m flask run",
+    "flask-dev": "pip3 install -r requirements.txt && cd app/api && python3 -m flask run",
     "next-dev": "next dev",
     "dev": "concurrently \"pnpm run next-dev\" \"pnpm run flask-dev\"",
     "build": "next build",

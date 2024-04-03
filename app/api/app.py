@@ -27,7 +27,7 @@ service_context = ServiceContext.from_defaults(
 )
 # Load the data, for this example data needs to be in a test file 
 #data = SimpleDirectoryReader(input_dir="data",input_files=["test.pdf"]).load_data()
-data = SimpleDirectoryReader(input_files=["test.pdf"]).load_data()
+data = SimpleDirectoryReader(input_files=["data/test.pdf"]).load_data()
 index = VectorStoreIndex.from_documents(data, service_context=service_context)
 
 # Create a cohere reranker 
