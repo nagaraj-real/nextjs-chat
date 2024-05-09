@@ -7,8 +7,6 @@ import os
 API_KEY = os.environ['COHERE_API_KEY']
 
 def chat(user_query):
-    # Use Cohere's RAG retriever in document mode to generate an answer.
-    # Cohere provides exact citations for the sources it used.
     llm = ChatCohere()
     rag = CohereRagRetriever(llm=llm, connectors=[])
     loader = PyPDFLoader('data/resum.pdf')
@@ -31,5 +29,7 @@ def start_chat():
     pprint(answer.page_content)
     return str(response)
 
-if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0', port=5001)
+@app.route("/api/hello", methods = ['GET'])
+def start_chat():
+    return "hello"
+
