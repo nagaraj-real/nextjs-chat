@@ -30,6 +30,6 @@ def start_chat():
     return str(response)
 
 @app.route("/api/hello", methods = ['GET'])
-def start_chat():
+def hello():
     return "hello"
 
