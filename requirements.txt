@@ -1,8 +1,1 @@
 Flask==2.2.5
-Werkzeug==3.0.3
-llama-index==0.10.26
-llama-index-agent-openai==0.2.1
-llama-index-embeddings-cohere==0.1.5
-llama-index-postprocessor-cohere-rerank==0.1.4
-llama-index-llms-cohere==0.1.5
-Flask-Cors>=3.0
