@@ -40,3 +40,5 @@ yarn-error.log*
 .venv/
 
 api/data
+
+__pycache__/

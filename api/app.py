@@ -2,7 +2,7 @@ from pprint import pprint
 from flask import Flask,request
 from langchain_cohere import ChatCohere, CohereEmbeddings, CohereRagRetriever, CohereRerank
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import FAISS
 from langchain.retrievers import ContextualCompressionRetriever
 
 import os
@@ -19,7 +19,7 @@ def chat(user_query):
     loader = PyPDFLoader('data/resum.pdf')
     pages = loader.load_and_split()
     # Create a vector store from the documents
-    chroma_index  = Chroma.from_documents(pages, cohere_embeddings)
+    chroma_index  = FAISS.from_documents(pages, cohere_embeddings)
 
     # Create Cohere's reranker with the vector DB using Cohere's embeddings as the base retriever.
     compression_retriever = ContextualCompressionRetriever(
