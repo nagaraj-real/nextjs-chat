@@ -128,7 +128,7 @@ async function submitUserMessage(content: string) {
 
   const ui = createStreamableUI(<SpinnerMessage />);
   (async () => {
-    const response = await fetch("api/chat?question=" + content);
+    const response = await fetch("/api/chat?question=" + content);
     const message = await response.text();
     ui.done(<BotMessage content={message} />);
   })();
