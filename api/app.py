@@ -7,7 +7,7 @@ from langchain.retrievers import ContextualCompressionRetriever
 
 import os
 
-API_KEY = os.environ['COHERE_API']
+API_KEY = os.environ['COHERE_API_KEY']
 
 def chat(user_query):
     # Create Cohere's chat model, embeddings and rerank objects.
@@ -50,3 +50,6 @@ def start_chat():
     pprint("Answer:")
     pprint(answer.page_content)
     return str(response)
+
+if __name__ == "__main__":
+    app.run(debug=True,host='0.0.0.0', port=5001)
