@@ -3,3 +3,4 @@ Flask==3.0.3
 langchain-cohere==0.1.4
 langchain-community==0.0.38
 pypdf==4.2.0
+Flask-Limiter==3.6.0

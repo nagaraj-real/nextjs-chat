@@ -48,11 +48,6 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
     setNewChatId(id)
   })
 
-  useEffect(() => {
-    missingKeys.map(key => {
-      toast.error(`Missing ${key} environment variable!`)
-    })
-  }, [missingKeys])
 
   const { messagesRef, scrollRef, visibilityRef, isAtBottom, scrollToBottom } =
     useScrollAnchor()
